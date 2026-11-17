@@ -37,14 +37,14 @@ a:active,button:active,.card:active .btn{transform:scale(.97)}
 /* ---------- Header ---------- */
 .hdr{position:sticky;top:0;z-index:50;background:var(--brown);padding-top:env(safe-area-inset-top);transition:box-shadow .35s ease}
 .hdr.scrolled{box-shadow:0 1px 0 rgba(248,202,79,.35),0 6px 18px rgba(0,0,0,.18)}
-.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px var(--pad);transition:padding .45s var(--ease)}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:16px var(--pad);transition:padding .45s var(--ease)}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--gold);flex-shrink:0}
 .brand img{width:52px;height:52px;transition:width .45s var(--ease),height .45s var(--ease)}
 .brand-txt{display:flex;flex-direction:column;line-height:1.15;white-space:nowrap}
 .brand-name{font-size:19px;letter-spacing:3px;font-weight:600;transition:font-size .45s var(--ease)}
 .brand-tag{font-size:10px;letter-spacing:2px;opacity:.85;margin-top:3px;max-height:16px;overflow:hidden;transition:max-height .45s var(--ease),opacity .3s ease,margin .45s var(--ease)}
 
-.nav{display:flex;gap:6px}
+.nav{display:flex;gap:6px;margin-left:auto}
 .nav-a{display:block;color:var(--ivory);text-decoration:none;font-size:15px;padding:12px 18px;border-radius:999px;transition:background .25s,color .25s}
 .nav-a.act,.dd.op>.nav-a{background:var(--gold-soft);color:var(--brown);font-weight:600}
 .dd{position:relative}
