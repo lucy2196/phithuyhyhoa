@@ -8,7 +8,7 @@
   --pad:5%; --r:20px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:96px}
+html{background:#3B2718;scroll-behavior:smooth;scroll-padding-top:96px}
 body{margin:0;background:var(--ivory);color:var(--brown);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 h1,h2,h3{font-weight:600;letter-spacing:-.02em;margin:0}
