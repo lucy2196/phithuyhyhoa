@@ -1,4 +1,37 @@
 (() => {
+  // ---------- Intro: big logo -> header position -> page unrolls top to bottom ----------
+  (function intro() {
+    const html = document.documentElement;
+    const ov = document.querySelector('.intro'), lg = document.querySelector('.intro-logo');
+    const target = document.querySelector('.brand img'), txt = document.querySelector('.brand-txt');
+    const done = () => { html.classList.remove('intro-on'); ov.remove(); lg.remove(); };
+    if (!html.classList.contains('intro-on') || !ov || !lg) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return done();
+    ov.style.animation = lg.style.animation = 'none';
+    window.scrollTo(0, 0);
+    const go = () => {
+      requestAnimationFrame(() => lg.classList.add('in'));
+      setTimeout(() => {
+        const a = lg.getBoundingClientRect(), b = target.getBoundingClientRect();
+        lg.style.transition = 'none';
+        lg.style.left = a.left + 'px'; lg.style.top = a.top + 'px'; lg.style.width = a.width + 'px';
+        lg.style.transform = 'none';
+        lg.getBoundingClientRect();
+        lg.style.transition = 'transform 1s cubic-bezier(.65,0,.35,1)';
+        const k = b.width / a.width;
+        lg.style.transform = `translate(${b.left - a.left}px, ${b.top - a.top}px) scale(${k})`;
+        setTimeout(() => {
+          txt.style.opacity = '1';
+          ov.style.transition = 'clip-path 1.3s cubic-bezier(.65,0,.35,1)';
+          ov.style.clipPath = 'inset(100% 0 0 0)';
+          setTimeout(() => { target.style.visibility = 'visible'; lg.style.opacity = '0'; }, 350);
+          setTimeout(() => { txt.style.opacity = ''; target.style.visibility = ''; done(); }, 1350);
+        }, 1050);
+      }, 1300);
+    };
+    if (lg.complete) go(); else { lg.onload = go; lg.onerror = done; }
+  })();
+
   const root = document.documentElement;
   const hdr = document.querySelector('.hdr');
 
