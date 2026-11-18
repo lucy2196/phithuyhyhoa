@@ -17,4 +17,4 @@ Các chỗ trong ngoặc vuông `[...]` trong `index.html` chờ thông tin th�
 
 - `assets/img/logo-mark.svg` – biểu tượng dùng trên web (vector, nền trong suốt)
 - `assets/img/logo/` – bộ 12 logo chốt dạng vector, lưu để dùng sau:
-  logo dọc, biểu tượng, logo ngang; mỗi loại có bản 1 màu nâu, màu trên nền nâu, màu trên nền ngà, màu nền trong suốt
+  biểu tượng (01–04), logo ngang (05–08), logo dọc (09–12); mỗi loại có bản 1 màu nâu, màu trên nền nâu, màu trên nền ngà, màu nền trong suốt
