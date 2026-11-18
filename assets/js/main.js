@@ -20,15 +20,16 @@
     const wait = ms => new Promise(r => setTimeout(r, ms));
     const run = async () => {
       // 1) logo appears
-      await lg.animate([{ opacity: 0, transform: 'scale(.82)' }, { opacity: 1, transform: 'scale(1)' }],
+      await lg.animate([{ opacity: 0, filter: 'brightness(.7)' }, { opacity: 1, filter: 'none' }],
         { duration: 500, easing: OUT, fill: 'forwards' }).finished;
       await wait(200);
       // 2) logo flies up, brown cover slides up at the same time
       const a = lg.getBoundingClientRect(), b = target.getBoundingClientRect();
-      const dx = (b.left + b.width / 2) - (a.left + a.width / 2), dy = (b.top + b.height / 2) - (a.top + a.height / 2);
       const FLY = 750;
+      // animate real size (not scale) so the vector logo is redrawn sharp on every frame
+      Object.assign(lg.style, { margin: '0', left: a.left + 'px', top: a.top + 'px', width: a.width + 'px' });
       await Promise.all([
-        lg.animate([{ transform: 'translate(0,0) scale(1)' }, { transform: `translate(${dx}px,${dy}px) scale(${b.width / a.width})` }],
+        lg.animate([{ left: a.left + 'px', top: a.top + 'px', width: a.width + 'px' }, { left: b.left + 'px', top: b.top + 'px', width: b.width + 'px' }],
           { duration: FLY, easing: MOVE, fill: 'forwards' }).finished,
         ov.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-100%)' }],
           { duration: FLY, easing: MOVE, fill: 'forwards' }).finished
@@ -53,7 +54,7 @@
         anims.push(el.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }],
           { duration: 450, delay: d * SPREAD * .75, easing: OUT, fill: 'both' }).finished);
       });
-      lg.style.zIndex = '102';
+      target.style.visibility = 'visible'; lg.style.visibility = 'hidden';
       await Promise.all(anims);
       target.style.visibility = 'visible';
       done();
