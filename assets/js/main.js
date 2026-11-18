@@ -8,7 +8,11 @@
     const target = document.querySelector('.brand img');
     if (!html.classList.contains('intro-on') || !ov || !lg) return;
     const ITEMS = '.nav,.hdr-cta,.menu-btn,.brand-txt,.hero-txt>*,.hero-media,.trust>div,.sec-head,.sec>h2,.card,.note,.story-img,.story-txt>*,.steps>li,.ftr-grid>div,.ftr-copy,.mbar>.btn';
-    const done = () => { html.classList.remove('intro-on'); ov.remove(); lg.remove(); };
+    const block = e => { if (html.classList.contains('intro-on')) e.preventDefault(); };
+    const keys = e => { if (['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].includes(e.key)) block(e); };
+    addEventListener('wheel', block, { passive: false }); addEventListener('touchmove', block, { passive: false }); addEventListener('keydown', keys);
+    const done = () => { html.classList.remove('intro-on'); ov.remove(); lg.remove();
+      removeEventListener('wheel', block); removeEventListener('touchmove', block); removeEventListener('keydown', keys); };
     if (matchMedia('(prefers-reduced-motion: reduce)').matches || !lg.animate) return done();
     ov.style.animation = lg.style.animation = 'none';
     window.scrollTo(0, 0);
